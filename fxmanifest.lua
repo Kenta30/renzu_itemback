@@ -19,12 +19,3 @@ server_scripts {
 	'config.lua',
 	'server/main.lua'
 }
-
-files {
-	'components.json',
-	'html/index.html',
-	'html/script.js',
-	'html/style.css',
-	'html/levelup.gif',
-    'html/audio/*.ogg',
-}
