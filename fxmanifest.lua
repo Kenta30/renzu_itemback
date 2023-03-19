@@ -1,11 +1,14 @@
-shared_script '@renzu_shield/init.lua' 
-fx_version "adamant"
+fx_version "cerulean"
 
 games { 'gta5'}
 lua54 'yes'
 use_experimental_fxv2_oal 'yes'
 
-shared_script '@ox_lib/init.lua'
+shared_scripts {
+	'@ox_lib/init.lua',
+	'@es_extended/imports.lua'
+}
+
 client_scripts {
 	'config.lua',
 	'components.lua',
