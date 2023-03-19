@@ -1,15 +1,11 @@
-ESX = nil
 local currentWeapon = nil
 local loaded = false
 local compodata = {}
 local itemsdb = {}
-local PlayerData = {}
-Citizen.CreateThread(function()
-	Wait(1)
+
+CreateThread(function()
+	Wait(3000)
 	itemsdb = exports.ox_inventory:Items()
-	ESX = exports['es_extended']:getSharedObject()
-	ESX.PlayerData = ESX.GetPlayerData()
-	PlayerData = ESX.PlayerData
 	local componentitems = {}
 	for item,v in pairs(itemsdb) do
 		if v.client and v.client.component then
@@ -17,9 +13,9 @@ Citizen.CreateThread(function()
 		end
 	end
 	for k,v in pairs(components_data) do
-		local compo = GetHashKey(v.name)
-		v.model = GetHashKey(v.model)
-		v.name = GetHashKey(v.name)
+		local compo = joaat(v.name)
+		v.model = joaat(v.model)
+		v.name = joaat(v.name)
 		for item,v2 in pairs(componentitems) do
 			for k,v3 in pairs(v2) do
 				if compo == v3 then
@@ -40,7 +36,6 @@ RegisterNetEvent('esx:playerLoaded', function(playerData)
 			ReqAndDelete(v.entity)
 		end
 	end
-	PlayerData = playerData
 	onback = {}
 end)
 
@@ -64,11 +59,6 @@ AddEventHandler('esx:onPlayerLogout', function()
 		end
 	end
 	onback = {}
-end)
-
-RegisterNetEvent('esx:setJob')
-AddEventHandler('esx:setJob', function(job)
-	PlayerData.job = job
 end)
 
 GetWeaponComponents = function(weapon)
@@ -106,7 +96,7 @@ ItemBack = function(name)
 		local bone = GetPedBoneIndex(ped, data["back_bone"])
 		lib.requestModel(model)
 		SetModelAsNoLongerNeeded(model)
-		local ent = CreateObject(GetHashKey(model), GetEntityCoords(cache.ped)-vec3(0.0,0.0,5.0), true, true, false)
+		local ent = CreateObject(joaat(model), GetEntityCoords(cache.ped)-vec3(0.0,0.0,5.0), true, true, false)
 		while not DoesEntityExist(ent) do Wait(1) end
 		while not NetworkGetEntityIsNetworked(ent) do Wait(1) NetworkRegisterEntityAsNetworked(ent) end
 		if not onback[itemname] then onback[itemname] = {} end
