@@ -1,7 +1,7 @@
 -- Item registration
 -- some item included in default are from my server remove it if you dont have the item
 Config = {
-    ["lpmedkit"] = { -- Item Name
+    ["medikit"] = { -- Item Name
         model="prop_ld_health_pack", -- Model you want to display
         back_bone = 23553, -- PED bone the entity is attached to.
         -- Location of the model on the players back. Note this is and offset relative to the players bone coords.
@@ -233,6 +233,17 @@ Config = {
     },
 
     ["meth"] = {
+        model="hei_prop_pill_bag_01", 
+        back_bone = 24818,
+        x = -0.1,
+        y = -0.17,
+        z = 0.12,
+        x_rotation = 0.0,
+        y_rotation = 90.0,
+        z_rotation = 0.0,
+    },
+	
+    ["speed"] = {
         model="hei_prop_pill_bag_01", 
         back_bone = 24818,
         x = -0.1,
